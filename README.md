@@ -229,6 +229,10 @@ You should make changes custom host configurations ```./php-fpm/php-fpm.d/z-www.
 docker container restart laravel
 ```
 
+Many important configuration values are defined using the ```./laravel/webapp/.env``` file that exists at the root of your application.
+
+[https://laravel.com/docs/9.x#environment-based-configuration](https://laravel.com/docs/9.x#environment-based-configuration)
+
 add and/or remove laravel site folders and files with any ftp client program in ```./laravel/webapp``` folder.
 <br />You can also visit `https://example.com` to access website after starting the containers.
 
