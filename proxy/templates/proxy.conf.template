@@ -34,11 +34,6 @@ server {
 	#ssl_trusted_certificate /etc/letsencrypt/live/${NGINX_HOST}/chain.pem;
 	#ssl_dhparam /etc/letsencrypt/ssl-dhparam.pem;
 	include /etc/letsencrypt/options-ssl-nginx.conf;
-	#
-	client_max_body_size 8m;
-	proxy_headers_hash_max_size 768;
-	proxy_headers_hash_bucket_size 128;
-	#
   
 	location / {		
 		proxy_pass	http://docker_webserver;		
@@ -66,11 +61,24 @@ server {
 	}
 	#
 	# deny access to .htaccess vb. files, if Apache's document root
-	#	
+	#
 	location ~/\. {
 		deny all;     
 		log_not_found off;
-	}    
+	}
+	#
+	location ~ /.well-known {
+		allow all;
+	}
+	#
+	location = /favicon.ico {
+		log_not_found off;        
+	}
+	#
+	location = /robots.txt {
+		allow all;
+		log_not_found off;        
+	}        
 	#
 	access_log off;
 	error_log  /var/log/nginx/${NGINX_HOST}.error.log error;
