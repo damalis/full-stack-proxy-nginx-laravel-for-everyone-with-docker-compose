@@ -35,7 +35,7 @@ services:
         labels:            
             - 'docker-volume-backup.stop-during-backup=true'
         command: > 
-            bash -c "apt-get -y update && apt-get install -y zip unzip libicu-dev && docker-php-ext-install pdo_mysql intl && pecl install -o -f redis && rm -rf /tmp/pear && docker-php-ext-enable redis pdo_mysql intl; curl -sS https://getcomposer.org/installer | php && mv composer.phar /usr/local/bin/composer && 
+            bash -c "apt-get -y update && apt-get install -y zip unzip libicu-dev && docker-php-ext-install pdo_mysql intl && pecl install -o -f redis && rm -rf /tmp/pear && docker-php-ext-enable redis; curl -sS https://getcomposer.org/installer | php && mv composer.phar /usr/local/bin/composer && 
             if [ -f \"${WEBSERVER_DOC_ROOT}/webapp/.env\" ]; then composer update --working-dir=${WEBSERVER_DOC_ROOT}/webapp; else composer create-project laravel/laravel webapp && chmod -R 777 ${WEBSERVER_DOC_ROOT}/webapp/storage/framework ${WEBSERVER_DOC_ROOT}/webapp/storage/logs; fi; 
             sed -i \"s/DB_HOST=127.0.0.1/DB_HOST=database/;s/REDIS_HOST=127.0.0.1/REDIS_HOST=redis/\" ${WEBSERVER_DOC_ROOT}/webapp/.env; grep -qe 'date.timezone = ${LOCAL_TIMEZONE}' ${PHP_INI_DIR_PREFIX}/php/conf.d/security.ini || echo 'date.timezone = ${LOCAL_TIMEZONE}' >> ${PHP_INI_DIR_PREFIX}/php/conf.d/security.ini; php-fpm"
 
@@ -59,8 +59,6 @@ services:
             - laravel
         environment:
             TZ: '${LOCAL_TIMEZONE}'
-        labels:            
-            - "docker-volume-backup.stop-during-backup=true"
     
     certbot:
         depends_on:
@@ -112,9 +110,7 @@ services:
         environment:
             NGINX_HOST: ${DOMAIN_NAME}
             NGINX_PORT: 80
-            TZ: '${LOCAL_TIMEZONE}'            
-        labels:            
-            - "docker-volume-backup.stop-during-backup=true"
+            TZ: '${LOCAL_TIMEZONE}'
         command: bash -c "/docker-entrypoint.sh nginx -v; sh /tmp/ssl-proxyconf.sh '${DOMAIN_NAME}' '${LETSENCRYPT_CONF_PREFIX}' '${PROXY_PREFIX}'"
     
     phpmyadmin:
@@ -150,15 +146,13 @@ services:
         #    - database
         environment:
             #PMA_HOST: database
-            PMA_PMADB: phpmyadmin
+            PMA_PMADB: 'phpmyadmin'
             PMA_CONTROLUSER: '${PMA_CONTROLUSER}'
             PMA_CONTROLPASS: '${PMA_CONTROLPASS}'
             MYSQL_ROOT_PASSWORD: '${MYSQL_ROOT_PASSWORD}'
             UPLOAD_LIMIT: '${PMA_UPLOAD_LIMIT}'
             MEMORY_LIMIT: '${PMA_MEMORY_LIMIT}'
             TZ: '${LOCAL_TIMEZONE}'
-        labels:            
-            - "docker-volume-backup.stop-during-backup=true"
         command: >
             bash -c "echo ${PMA_HTPASSWD_USERNAME}:phpmyadmin:$$( printf \"%s:%s:%s\" \"${PMA_HTPASSWD_USERNAME}\" \"phpmyadmin\" \"${PMA_HTPASSWD_PASSWORD}\" | md5sum | awk '{print $$1}' ) > ${PMA_CONF_FOLDER}/.htpasswd 
             && printf 'AuthType Digest\\nAuthName \"phpmyadmin\"\\nAuthDigestProvider file\\nAuthUserFile ${PMA_CONF_FOLDER}/.htpasswd\\nRequire valid-user\\n' > ${WEBSERVER_DOC_ROOT}/.htaccess && a2enmod auth_digest; 
@@ -173,6 +167,7 @@ services:
             - backend
         volumes:
             - 'db:/var/lib/mysql'
+            - 'db-backup-data:/tmp/backup'
             - type: bind
               source: ./database/conf.d/z-mysql.cnf
               target: '${MYSQL_CONF_PREFIX}/z-mysql.cnf'
@@ -211,29 +206,29 @@ services:
         environment:
             ALLOW_EMPTY_PASSWORD: 'yes'
             TZ: '${LOCAL_TIMEZONE}'
-        labels:            
-            - "docker-volume-backup.stop-during-backup=true"
         command: "redis-server ${REDIS_CONF_PREFIX}/redis/redis.conf"
     
     backup:
-        image: 'futurice/docker-volume-backup'
+        image: offen/docker-volume-backup:latest
         container_name: backup
         networks:
             - backend
         volumes:
-            - '/var/run/docker.sock:/var/run/docker.sock:ro'
             - 'html:/backup/html:ro'
             - 'db:/backup/db:ro'
+            - 'db-backup-data:/backup/db-backup-data:ro'
+            - '/var/run/docker.sock:/var/run/docker.sock:ro'
             - type: bind
               source: ./backups
               target: /archive
         hostname: backup
         restart: unless-stopped
         environment:
-            BACKUP_WAIT_SECONDS: 120
             BACKUP_CRON_EXPRESSION: '20 01 * * *'
             BACKUP_FILENAME: 'backup-%Y-%m-%dT%H-%M-%S.tar.gz'
-            TZ: '${LOCAL_TIMEZONE}'    
+            BACKUP_RETENTION_DAYS: '7'
+            EXEC_LABEL: 'database'
+            #BACKUP_EXCLUDE_REGEXP: 'folder|folder|file|\\.log$$'   
 
 networks:
     backend: null
@@ -249,6 +244,8 @@ volumes:
             o: bind
     db:
         name: ${DATABASE_CONT_NAME}-data
+    db-backup-data:
+        name: ${DATABASE_CONT_NAME}-backup-data
     dtredis:
         name: redis-data
     certbot-etc:
