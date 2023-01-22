@@ -17,6 +17,9 @@ services:
             - type: bind
               source: ./php-fpm/php-fpm.d/z-www.conf
               target: '${PHP_INI_DIR_PREFIX}/php-fpm.d/z-www.conf'
+            - type: bind
+              source: ./packagecheck.sh
+              target: '/tmp/packagecheck.sh'
         hostname: laravel
         restart: unless-stopped
         ports:
@@ -35,7 +38,7 @@ services:
         labels:            
             - 'docker-volume-backup.stop-during-backup=true'
         command: > 
-            bash -c "apt-get -y update && apt-get install -y zip unzip libicu-dev && docker-php-ext-install pdo_mysql intl && pecl install -o -f redis && rm -rf /tmp/pear && docker-php-ext-enable redis; curl -sS https://getcomposer.org/installer | php && mv composer.phar /usr/local/bin/composer && 
+            bash -c "apt-get -y update && sh /tmp/packagecheck.sh 'zip unzip' && curl -sSL https://github.com/mlocati/docker-php-extension-installer/releases/latest/download/install-php-extensions -o - | sh -s intl pdo_mysql && pecl install -o -f redis && rm -rf /tmp/pear && docker-php-ext-enable redis; curl -sS https://getcomposer.org/installer | php && mv composer.phar /usr/local/bin/composer && 
             if [ -f \"${WEBSERVER_DOC_ROOT}/webapp/.env\" ]; then composer update --working-dir=${WEBSERVER_DOC_ROOT}/webapp; else composer create-project laravel/laravel webapp && chmod -R 777 ${WEBSERVER_DOC_ROOT}/webapp/storage/framework ${WEBSERVER_DOC_ROOT}/webapp/storage/logs; fi; 
             sed -i \"s/DB_HOST=127.0.0.1/DB_HOST=database/;s/REDIS_HOST=127.0.0.1/REDIS_HOST=redis/\" ${WEBSERVER_DOC_ROOT}/webapp/.env; grep -qe 'date.timezone = ${LOCAL_TIMEZONE}' ${PHP_INI_DIR_PREFIX}/php/conf.d/security.ini || echo 'date.timezone = ${LOCAL_TIMEZONE}' >> ${PHP_INI_DIR_PREFIX}/php/conf.d/security.ini; php-fpm"
 
