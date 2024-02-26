@@ -1,12 +1,42 @@
 # [full stack proxy nginx Laravel for everyone with docker compose](https://github.com/damalis/full-stack-proxy-nginx-laravel-for-everyone-with-docker-compose)
 
-If You want to build a reverse proxy website with Laravel "webapp" at short time;
+If You want to build a reverse proxy website with Laravel at short time;
 
-#### Full stack Proxy Nginx Laravel "webapp":
-<p align="left"> <a href="https://laravel.com/" target="_blank" rel="noreferrer"> <img src="https://avatars.githubusercontent.com/u/958072?s=200&v=4" alt="Laravel" height="40" width="40"/> </a>&nbsp;&nbsp;&nbsp; <a href="https://www.docker.com/" target="_blank" rel="noreferrer"> <img src="https://raw.githubusercontent.com/github/explore/80688e429a7d4ef2fca1e82350fe8e3517d3494d/topics/docker/docker.png" alt="docker" width="40" height="40" width="40"/> </a>&nbsp;&nbsp;&nbsp; <a href="https://mariadb.org/" target="_blank" rel="noreferrer"> <img src="https://avatars.githubusercontent.com/u/5877084?s=200&v=4" alt="mariadb" height="50" width="50"/> </a>&nbsp;&nbsp;&nbsp; <a href="https://www.nginx.com" target="_blank" rel="noreferrer"> <img src="https://avatars.githubusercontent.com/u/1412239?s=200&v=4" alt="nginx" height="40" width="40"/> </a>&nbsp;&nbsp;&nbsp; <a href="https://www.apache.org" target="_blank" rel="noreferrer"> <img src="https://avatars.githubusercontent.com/u/47359?s=200&v=4" alt="apache2" height="40" width="40"/> </a>&nbsp;&nbsp;&nbsp; <a href="https://www.php.net" target="_blank" rel="noreferrer"> <img src="https://avatars.githubusercontent.com/u/25158?s=200&v=4" alt="php" height="40" width="40"/> </a>&nbsp;&nbsp;&nbsp; <a href="https://redis.io" target="_blank" rel="noreferrer"> <img src="https://avatars.githubusercontent.com/u/1529926?s=200&v=4" alt="redis" height="40" width="40"/> </a>&nbsp;&nbsp;&nbsp; <a href="#" target="_blank" rel="noreferrer"> <img src="https://raw.githubusercontent.com/github/explore/80688e429a7d4ef2fca1e82350fe8e3517d3494d/topics/bash/bash.png" alt="Bash" height="50" width="50" /> </a>&nbsp;&nbsp;&nbsp;
- <a href="https://www.phpmyadmin.net/" target="_blank" rel="noreferrer"> <img src="https://avatars.githubusercontent.com/u/1351977?s=200&v=4" alt="phpmyadmin" height="40" width="40"/> </a>&nbsp;&nbsp;&nbsp; <a href="https://letsencrypt.org/" target="_blank" rel="noreferrer"> <img src="https://avatars.githubusercontent.com/u/17889013?s=200&v=4" alt="letsencrypt" height="40" width="40"/> </a>&nbsp;&nbsp;&nbsp; <a href="https://www.portainer.io/?hsLang=en" target="_blank" rel="noreferrer"> <img src="https://avatars.githubusercontent.com/u/22225832?s=200&v=4" alt="portainer" height="40" width="40"/> </a>&nbsp;&nbsp;&nbsp; <a href="https://www.offen.dev/" target="_blank" rel="noreferrer"> <img src="https://avatars.githubusercontent.com/u/47735043?s=200&v=4" alt="backup" height="35" width="35"/> </a> </p>
+#### Full stack Proxy Nginx Laravel:
+<p align="left"> <a href="https://laravel.com/" target="_blank" rel="noreferrer"> <img src="https://avatars.githubusercontent.com/u/958072?s=200&v=4" alt="Laravel" height="40" width="40"/> </a>&nbsp;&nbsp;&nbsp; 
+<a href="https://www.docker.com/" target="_blank" rel="noreferrer"> <img src="https://raw.githubusercontent.com/github/explore/80688e429a7d4ef2fca1e82350fe8e3517d3494d/topics/docker/docker.png" alt="docker" width="40" height="40" width="40"/> </a>&nbsp;&nbsp;&nbsp; 
+<a href="https://mariadb.org/" target="_blank" rel="noreferrer"> <img src="https://avatars.githubusercontent.com/u/5877084?s=200&v=4" alt="mariadb" height="50" width="50"/> </a>&nbsp;&nbsp;&nbsp; 
+<a href="https://dev.mysql.com/" target="_blank" rel="noreferrer"> <img src="https://avatars.githubusercontent.com/u/2452804?s=200&v=4" alt="mysql" height="50" width="50"/> </a>&nbsp;&nbsp;&nbsp; 
+<a href="https://www.nginx.com" target="_blank" rel="noreferrer"> <img src="https://avatars.githubusercontent.com/u/1412239?s=200&v=4" alt="nginx" height="40" width="40"/> </a>&nbsp;&nbsp;&nbsp; 
+<a href="https://www.apache.org" target="_blank" rel="noreferrer"> <img src="https://avatars.githubusercontent.com/u/47359?s=200&v=4" alt="apache2" height="40" width="40"/> </a>&nbsp;&nbsp;&nbsp; 
+<a href="https://www.php.net" target="_blank" rel="noreferrer"> <img src="https://avatars.githubusercontent.com/u/25158?s=200&v=4" alt="php" height="40" width="40"/> </a>&nbsp;&nbsp;&nbsp; 
+<a href="https://redis.io" target="_blank" rel="noreferrer"> <img src="https://avatars.githubusercontent.com/u/1529926?s=200&v=4" alt="redis" height="40" width="40"/> </a>&nbsp;&nbsp;&nbsp; 
+<a href="#" target="_blank" rel="noreferrer"> <img src="https://raw.githubusercontent.com/github/explore/80688e429a7d4ef2fca1e82350fe8e3517d3494d/topics/bash/bash.png" alt="Bash" height="50" width="50" /> </a>&nbsp;&nbsp;&nbsp; 
+<a href="https://www.phpmyadmin.net/" target="_blank" rel="noreferrer"> <img src="https://avatars.githubusercontent.com/u/1351977?s=200&v=4" alt="phpmyadmin" height="40" width="40"/> </a>&nbsp;&nbsp;&nbsp; 
+<a href="https://certbot.eff.org/" target="_blank" rel="noreferrer"> <img src="https://avatars.githubusercontent.com/u/17889013?s=200&v=4" alt="certbot" height="40" width="40"/> </a>&nbsp;&nbsp;&nbsp; 
+<a href="https://letsencrypt.org/" target="_blank" rel="noreferrer"> <img src="https://avatars.githubusercontent.com/u/9289019?s=200&v=4" alt="letsencrypt" height="40" width="40"/> </a>&nbsp;&nbsp;&nbsp; 
+<a href="https://www.portainer.io/?hsLang=en" target="_blank" rel="noreferrer"> <img src="https://avatars.githubusercontent.com/u/22225832?s=200&v=4" alt="portainer" height="40" width="40"/> </a>&nbsp;&nbsp;&nbsp; 
+<a href="https://www.offen.dev/" target="_blank" rel="noreferrer"> <img src="https://avatars.githubusercontent.com/u/47735043?s=200&v=4" alt="backup" height="35" width="35"/> </a> </p>
 
 Plus, manage docker containers with Portainer.
+
+#### Supported CPU architectures:
+<p align="left"> arm64/aarch64, x86-64 </p>
+
+#### Supported Linux Package Manage Systems:
+<p align="left"> apk, dnf, yum, apt/apt-get, zypper </p>
+ 
+#### Supported Linux Operation Systems:
+<p align="left"> <a href="https://alpinelinux.org/" target="_blank" rel="noreferrer"> <img src="https://avatars.githubusercontent.com/u/7600810?s=200&v=4" alt="alpine linux" height="40" width="40"/> </a>&nbsp;&nbsp;&nbsp; 
+<a href="https://fedoraproject.org/" target="_blank" rel="noreferrer"> <img src="https://raw.githubusercontent.com/github/explore/e6b1e7f0fb8d0bf920bd719c7289243138bdc1b4/topics/fedora/fedora.png" alt="fedora" height="40" width="40"/> </a>&nbsp;&nbsp;&nbsp; 
+<a href="https://www.centos.org/" target="_blank" rel="noreferrer"> <img src="https://avatars.githubusercontent.com/u/79192?s=200&v=4" alt="centos" height="40" width="40"/> </a>&nbsp;&nbsp;&nbsp; 
+<a href="https://www.debian.org/" target="_blank" rel="noreferrer"> <img src="https://avatars.githubusercontent.com/u/1854028?s=200&v=4" alt="debian" height="40" width="40"/> </a>&nbsp;&nbsp;&nbsp; 
+<a href="https://ubuntu.com/" target="_blank" rel="noreferrer"> <img src="https://avatars.githubusercontent.com/u/4604537?s=200&v=4" alt="ubuntu" height="40" width="40"/> </a>&nbsp;&nbsp;&nbsp; 
+<a href="https://www.raspberrypi.com/" target="_blank" rel="noreferrer"> <img src="https://avatars.githubusercontent.com/u/1294177?s=200&v=4" alt="ubuntu" height="40" width="40"/> </a>&nbsp;&nbsp;&nbsp; 
+<a href="https://www.redhat.com/en/technologies/linux-platforms/enterprise-linux" target="_blank" rel="noreferrer"> <img src="https://avatars.githubusercontent.com/u/33972111?s=200&v=4" alt="redhat on s390x (IBM Z)" height="40" width="40"/> </a>&nbsp;&nbsp;&nbsp; 
+<a href="https://www.suse.com/products/server/" target="_blank" rel="noreferrer"> <img src="https://avatars.githubusercontent.com/u/623819?s=200&v=4" alt="opensuse on s390x (IBM Z)" height="40" width="40"/> </a> </p>
+
+##### Note: Fedora 37, 39 and alpine linux x86-64 compatible, could not try sles IBM Z s390x, rhel IBM Z s390x and raspberrypi.
 
 #### With this project you can quickly run the following:
 
@@ -15,7 +45,7 @@ Plus, manage docker containers with Portainer.
 - [proxy (nginx)](https://hub.docker.com/_/nginx)
 - [certbot (letsencrypt)](https://hub.docker.com/r/certbot/certbot)
 - [phpMyAdmin](https://hub.docker.com/r/phpmyadmin/phpmyadmin/)
-- [database](https://hub.docker.com/_/mariadb)
+- [databaseMariadb](https://hub.docker.com/_/mariadb) [databaseMysql](https://hub.docker.com/_/mysql)
 - [redis](https://hub.docker.com/_/redis)
 - [backup](https://hub.docker.com/r/offen/docker-volume-backup)
 
@@ -45,7 +75,7 @@ Create rules to open ports to the internet, or to a specific IPv4 address or ran
 	- [Redis](#redis)
 	- [Cache](#cache)
 	- [phpMyAdmin](#phpmyadmin)
-	- [backup](#backup)					  
+	- [backup](#backup)
 
 ## Automatic
 
@@ -72,15 +102,16 @@ Make sure you have the latest versions of **Docker** and **Docker Compose** inst
 - [How install docker](https://docs.docker.com/engine/install/)
 - [How install docker compose](https://docs.docker.com/compose/install/)
 
-Clone this repository or copy the files from this repository into a new folder. In the **docker-compose.yml** file you may change the database from MariaDB to MySQL.
+Clone this repository or copy the files from this repository into a new folder.
 
 Make sure to [add your user to the `docker` group](https://docs.docker.com/install/linux/linux-postinstall/#manage-docker-as-a-non-root-user).
 
 ## Manual
 
 ### Configuration
-				 
+
 download with
+
 ```
 git clone https://github.com/damalis/full-stack-proxy-nginx-laravel-for-everyone-with-docker-compose.git
 ```
@@ -97,26 +128,36 @@ Copy the example environment into `.env`
 cp env.example .env
 ```
 
-Edit the `.env` file to change values of ```LOCAL_TIMEZONE```, ```DOMAIN_NAME```, ```DIRECTORY_PATH```, ```LETSENCRYPT_EMAIL```, ```DB_USER```, ```DB_PASSWORD```, ```DB_NAME```, ```MYSQL_ROOT_PASSWORD```, ```PMA_CONTROLUSER```, ```PMA_CONTROLPASS```, ```PMA_HTPASSWD_USERNAME``` and ```PMA_HTPASSWD_PASSWORD```.
+Edit the `.env` file to change values of ```LOCAL_TIMEZONE```, ```DOMAIN_NAME```, ```DIRECTORY_PATH```, ```LETSENCRYPT_EMAIL```, ```DB_USER```, ```DB_PASSWORD```, ```DB_NAME```, ```MYSQL_ROOT_PASSWORD```, ```DATABASE_IMAGE_NAME```, ```DATABASE_CONT_NAME```, ```DATABASE_PACKAGE_MANAGER```, ```DATABASE_AUTHENTICATION_PLUGIN```, ```DATABASE_ADMIN_COMMANDLINE```, ```PMA_CONTROLUSER```, ```PMA_CONTROLPASS```, ```PMA_HTPASSWD_USERNAME``` and ```PMA_HTPASSWD_PASSWORD```.
 
 LOCAL_TIMEZONE=[to see local timezones](https://docs.diladele.com/docker/timezones.html)
 
-DIRECTORY_PATH=```pwd``` at command line
+DIRECTORY_PATH=```pwd``` at command line\
+DATABASE_IMAGE_NAME=```mariadb``` or ```mysql```\
+DATABASE_CONT_NAME=```mariadb```, ```mysql``` or ```custom name```\
+DATABASE_PACKAGE_MANAGER=```apt-get update && apt-get install -y gettext-base``` for mariadb, ```microdnf install -y gettext``` for mysql\
+DATABASE_AUTHENTICATION_PLUGIN=```mysql_native_password``` for mariadb, ```caching_sha2_password``` for mysql\
+DATABASE_ADMIN_COMMANDLINE=```mariadb-admin``` for mariadb, ```mysqladmin``` for mysql\
+VARNISH_VERSION=```latest``` for centos version 9+ and fedora, ```stable``` for the others
 
 and
 
 ```
 cp ./phpmyadmin/apache2/sites-available/default-ssl.sample.conf ./phpmyadmin/apache2/sites-available/default-ssl.conf
 ```
-
 change example.com to your domain name in ```./phpmyadmin/apache2/sites-available/default-ssl.conf``` file.
+
+```
+cp ./database/phpmyadmin/sql/create_tables.sql.template.example ./database/phpmyadmin/sql/create_tables.sql.template
+```
+change pma_controluser, db_authentication_plugin and db_authentication_password in ```./database/phpmyadmin/sql/create_tables.sql.template``` file.
 
 ### Installation
 
 Firstly: will create external volume
 
 ```
-docker volume create --driver local --opt type=none --opt device=${DIRECTORY_PATH}/certbot --opt o=bind certbot-etc
+docker volume create --driver local --opt type=none --opt device=${PWD}/certbot --opt o=bind certbot-etc
 ```
 
 ```
@@ -177,7 +218,8 @@ To stop and remove all the containers use the `down` command:
 docker compose down
 ```
 
-to remove portainer and the other containers
+to remove portainer and the other containers:
+
 ```
 docker rm -f $(docker ps -a -q)
 ```
@@ -188,13 +230,26 @@ Use `-v` if you need to remove the database volume which is used to persist the 
 docker compose down -v
 ```
 
-to remove external certbot-etc and portainer and the other volumes
+to remove external certbot-etc and portainer and the other volumes:
 
 ```
 docker volume rm $(docker volume ls -q)
 ```
 
-to remove portainer and the other images
+Delete all images, containers, volumes, and networks that are not associated with a container (dangling):
+
+```
+docker system prune
+```
+
+To additionally remove any stopped containers and all unused images (not just dangling ones), add the -a flag to the command:
+
+```
+docker system prune -a
+```
+
+to remove portainer and the other images:
+
 ```
 docker rmi $(docker image ls -q)
 ```
@@ -233,11 +288,11 @@ You should make changes custom host configurations ```./php-fpm/php-fpm.d/z-www.
 docker container restart laravel
 ```
 
-Many important configuration values are defined using the ```./laravel/webapp/.env``` file that exists at the root of your application.
+Many important configuration values are defined using the ```./laravel/.env``` file that exists at the root of your application.
 
 [https://laravel.com/docs/9.x#environment-based-configuration](https://laravel.com/docs/9.x#environment-based-configuration)
 
-add and/or remove laravel site folders and files with any ftp client program in ```./laravel/webapp``` folder.
+add and/or remove laravel site folders and files with any ftp client program in ```./laravel``` folder.
 <br />You can also visit `https://example.com` to access website after starting the containers.
 
 #### Proxy
@@ -262,6 +317,8 @@ The configuration for Laravel's database services is located in your application
 
 [https://mariadb.com/kb/en/configuring-mariadb-with-option-files/](https://mariadb.com/kb/en/configuring-mariadb-with-option-files/)
 
+[https://dev.mysql.com/doc/refman/8.3/en/](https://dev.mysql.com/doc/refman/8.3/en/)
+
 #### Redis
 
 You may configure your application's Redis settings via the config/database.php configuration file.
@@ -269,7 +326,7 @@ You may configure your application's Redis settings via the config/database.php 
 [https://laravel.com/docs/9.x/redis](https://laravel.com/docs/9.x/redis)
 
 #### Cache
- 
+
 Your application's cache configuration file is located at config/cache.php.
 
 [https://laravel.com/docs/9.x/cache#main-content](https://laravel.com/docs/9.x/cache#main-content)
