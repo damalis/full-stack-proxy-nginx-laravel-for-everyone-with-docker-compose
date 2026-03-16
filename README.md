@@ -103,7 +103,7 @@ Open a terminal and `cd` to the folder in which `docker-compose.yml` is saved an
 ```
 cd full-stack-proxy-nginx-laravel-for-everyone-with-docker-compose
 chmod +x install.sh
-sudo LC_ALL=C.UTF-8 ./install.sh # LC_ALL=C.UTF-8 if not os language english
+LC_ALL=C.UTF-8 ./install.sh # LC_ALL=C.UTF-8 if not os language english
 ```
 
 ### Manual
@@ -198,20 +198,6 @@ Edit the `.env` file to change values of
 </tbody>
 </table>
 
-and
-
-```
-cp ./phpmyadmin/apache2/sites-available/default-ssl.sample.conf ./phpmyadmin/apache2/sites-available/default-ssl.conf
-```
-
-change example.com to your domain name in ```./phpmyadmin/apache2/sites-available/default-ssl.conf``` file.
-
-```
-cp ./database/phpmyadmin/sql/create_tables.sql.template.example ./database/phpmyadmin/sql/create_tables.sql.template
-```
-
-change pma_controluser and db_authentication_password in ```./database/phpmyadmin/sql/create_tables.sql.template``` file.
-
 #### Installation
 
 Firstly: will create external volume
@@ -232,7 +218,7 @@ then reloading for proxy ssl configuration
 docker container restart proxy
 ```
 
-The containers are now built and running. You should be able to access the Laravel installation with the configured IP in the browser address. `https://example.com`.
+The containers are now built and running. You should be able to access the Laravel installation with the configured IP in the browser address. `https://DOMAIN_NAME`.
 
 For convenience you may add a new entry into your hosts file.
 
@@ -244,7 +230,7 @@ docker compose -f portainer-docker-compose.yml -p portainer up -d
 
 manage docker with [Portainer](https://www.portainer.io/) is the definitive container management tool for Docker, Docker Swarm with it's highly intuitive GUI and API. 
 
-You can also visit `https://example.com:9001` to access portainer after starting the containers.
+You can also visit `https://DOMAIN_NAME:9001` to access portainer after starting the containers.
 
 ### Usage
 
@@ -317,7 +303,7 @@ docker compose up -d # Starts services in detached mode (in the background)
 You should see the "Laravel" page in your browser. If not, please check if your PHP installation satisfies Laravel's requirements.
 
 ```
-https://example.com
+https://DOMAIN_NAME
 ```
 
 add or remove code in the ./php-fpm/php/conf.d/security.ini file for custom php.ini configurations
@@ -337,7 +323,7 @@ Many important configuration values are defined using the ```./laravel/.env``` f
 [https://laravel.com/docs/12.x/installation#environment-based-configuration](https://laravel.com/docs/12.x/installation#environment-based-configuration)
 
 add and/or remove laravel site folders and files with any ftp client program in ```./laravel``` folder.
-<br />You can also visit `https://example.com` to access website after starting the containers.
+<br />You can also visit `https://DOMAIN_NAME` to access website after starting the containers.
 
 #### Proxy
 
@@ -383,7 +369,7 @@ You can add your own custom config.inc.php settings (such as Configuration Stora
 ./phpmyadmin/config.user.inc.php
 ```
 
-You can also visit `https://example.com:9090` to access phpMyAdmin after starting the containers.
+You can also visit `https://DOMAIN_NAME:9090` to access phpMyAdmin after starting the containers.
 
 The first authorize screen(htpasswd;username or password) and phpmyadmin login screen the username and the password is the same as supplied in the `.env` file.
 
