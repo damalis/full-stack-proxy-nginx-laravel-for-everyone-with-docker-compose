@@ -36,7 +36,7 @@ services:
         labels:
             - 'docker-volume-backup.stop-during-backup=true'
         command: >
-            bash -c "apt-get update && sh /tmp/packagecheck.sh 'git unzip' && curl -sSL https://github.com/mlocati/docker-php-extension-installer/releases/latest/download/install-php-extensions -o - | sh -s intl pdo_mysql redis zip @composer && 
+            bash -c "apt-get update && sh /tmp/packagecheck.sh 'git unzip' && curl -sSLf https://github.com/mlocati/docker-php-extension-installer/releases/latest/download/install-php-extensions -o - | sh -s intl pdo_mysql redis zip @composer && 
             if [ -f \"${WEBSERVER_DOC_ROOT}/.env\" ]; then composer update --working-dir=${WEBSERVER_DOC_ROOT}; else rm -f ${WEBSERVER_DOC_ROOT}/README.md && composer create-project laravel/laravel . --working-dir=${WEBSERVER_DOC_ROOT} && composer require barryvdh/laravel-debugbar --dev && chmod -R 777 ${WEBSERVER_DOC_ROOT}/storage/framework ${WEBSERVER_DOC_ROOT}/storage/logs; fi; 
             sed \"s/APP_URL=http:\\/\\/localhost/APP_URL=https:\\/\\/${DOMAIN_NAME}/;s/DB_CONNECTION=sqlite/DB_CONNECTION=${DATABASE_IMAGE_NAME}/;s/# DB_HOST=127.0.0.1/DB_HOST=database/;s/# DB_PORT=3306/DB_PORT=3306/;s/# DB_DATABASE=laravel/DB_DATABASE=${DB_NAME}/;s/# DB_USERNAME=root/DB_USERNAME=${DB_USER}/;s/# DB_PASSWORD=/DB_PASSWORD=${DB_PASSWORD}/;s/REDIS_HOST=127.0.0.1/REDIS_HOST=redis/\" ${WEBSERVER_DOC_ROOT}/.env.example > ${WEBSERVER_DOC_ROOT}/.env; php artisan key:generate; php artisan migrate; TMP=$$(mktemp) && grep -vF 'date.timezone' ${PHP_INI_DIR_PREFIX}/php/conf.d/security.ini > $$TMP && echo 'date.timezone = ${LOCAL_TIMEZONE}' >> $$TMP && cp $$TMP ${PHP_INI_DIR_PREFIX}/php/conf.d/security.ini; php-fpm"
 
